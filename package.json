@@ -27,7 +27,6 @@
     "faiss-node": "^0.5.1",
     "google-tts-api": "^0.0.6",
     "jsonwebtoken": "^9.0.2",
-    "langchain": "^0.3.37",
     "mongoose": "^8.19.1"
   },
   "devDependencies": {
