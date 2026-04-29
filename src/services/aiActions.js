@@ -1,6 +1,4 @@
 const Complaint = require('../../models/Complaint');
-// Transaction model if needed
-// const Transaction = require('../../models/Transaction');
 
 const calculateEMI = ({ principal, rate, months }) => {
   if (!principal || !rate || !months) {
