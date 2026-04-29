@@ -57,8 +57,8 @@ const startServer = async () => {
       console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
-    console.error('Failed to start server:', error.message);
-    process.exit(1);
+    console.error('Failed to start server. Full Error:', error);
+    // process.exit(1); // Removed to ensure Render captures the log
   }
 };
 
