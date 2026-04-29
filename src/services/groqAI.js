@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+
 
 const GROQ_API_URL = `${process.env.GROQ_API_BASE || 'https://api.groq.com'}/open${'ai'}/v1/chat/completions`;
 const REQUEST_TIMEOUT_MS = 12000;
