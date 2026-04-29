@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Env files (IMPORTANT 🔐)
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+
+# Build files
+dist/
+build/
+
+# Coverage
+coverage/
+
+# IDE files
+.vscode/
+.idea/
+
+# Temporary files
+tmp/
+temp/

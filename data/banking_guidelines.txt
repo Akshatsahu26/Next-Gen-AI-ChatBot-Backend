@@ -1,0 +1,18 @@
+# BANK SEVA - KNOWLEDGE BASE & GUIDELINES
+
+## 1. LOAN POLICIES & ELIGIBILITY
+- **Personal Loans**: Available up to ₹5,00,000 for salaried employees with a minimum monthly income of ₹25,000. Interest rates start at 10.5% per annum.
+- **Home Loans**: Available up to ₹50,00,000. Requires a minimum credit score of 700. Maximum tenure is 20 years. Interest rate is currently 8.5% p.a.
+- **Student Loans**: Available up to ₹10,00,000 for higher education. No collateral required for loans under ₹4,00,000. Interest rate is 9.0% p.a.
+- **Loan EMI Calculation**: EMI is calculated using the standard formula based on principal, interest rate, and tenure. Prepayment of loans is allowed without penalty after 6 months of regular EMI payments.
+
+## 2. FRAUD RULES & COMPLAINT RESOLUTION
+- **Unauthorized Transactions**: If a user reports an unauthorized transaction, they must file a complaint immediately. The bank will block the associated card or account within 1 hour of the report.
+- **Resolution Timeframe**: Fraud investigations take up to 7 business days. If the fraud is proven to be a system breach, the full amount will be refunded.
+- **Reporting Mechanism**: Customers should use the "Register Complaint" feature and select "Fraud" as the category. A ticket starting with "FRD-" will be issued.
+- **Phishing Guidelines**: Bank Seva will never ask for your UPI PIN, OTP, or CVV over a phone call. If you receive such a call, disconnect immediately and report the number.
+
+## 3. GENERAL BANKING GUIDELINES
+- **Minimum Balance**: Savings accounts must maintain a minimum monthly average balance of ₹2,000. Failure to do so will result in a penalty of ₹50 per month.
+- **Transfer Limits**: Standard UPI transfers are limited to ₹1,00,000 per day. NEFT transfers have no upper limit but may take up to 2 hours for processing.
+- **KYC Compliance**: All accounts must undergo KYC verification every 5 years. Accounts without updated KYC will be temporarily frozen for debit transactions.

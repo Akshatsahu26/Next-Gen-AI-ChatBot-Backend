@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "BankSeva Core APIs",
+    "description": "Standard banking endpoints for Transfer, Loan, and Fraud complaints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST Transfer",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{jwt_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"receiverId\": \"661f2abc1234567890abcdef\",\n  \"amount\": 500\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/banking/transfer",
+          "host": ["{{base_url}}"],
+          "path": ["api", "banking", "transfer"]
+        }
+      }
+    },
+    {
+      "name": "POST Loan",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{jwt_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 250000,\n  \"type\": \"Personal\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/banking/loan",
+          "host": ["{{base_url}}"],
+          "path": ["api", "banking", "loan"]
+        }
+      }
+    },
+    {
+      "name": "POST Fraud",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{jwt_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"description\": \"Unauthorized transaction of ₹500 on my account today.\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/banking/fraud",
+          "host": ["{{base_url}}"],
+          "path": ["api", "banking", "fraud"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "jwt_token",
+      "value": "paste_your_jwt_here"
+    }
+  ]
+}
