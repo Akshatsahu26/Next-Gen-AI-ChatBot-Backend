@@ -4,6 +4,14 @@ const dotenv = require('dotenv');
 
 dotenv.config({ override: true });
 
+process.on('uncaughtException', (err) => {
+  console.error('CRITICAL: Uncaught Exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('CRITICAL: Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
 const connectDB = require('./config/db');
 const transactionRoutes = require('./routes/transactionRoutes');
 const complaintRoutes = require('./routes/complaintRoutes');
