@@ -70,24 +70,33 @@ const withTimeout = async (url, options, timeoutMs = REQUEST_TIMEOUT_MS) => {
   }
 };
 
-const buildUserPrompt = ({ message, intent, docs, businessContext, sessionData }) => {
+const buildUserPrompt = ({ message, intent, docs, businessContext, sessionData, liveWebContext }) => {
   const contextBlock = docs && docs.length
     ? docs
         .map((doc, index) => `${index + 1}. [${doc.topic}] ${doc.title}: ${doc.content}`)
         .join('\n')
     : 'No retrieved context.';
 
-  return [
+  const promptParts = [
     `User message: ${message}`,
     `Intent: ${intent}`,
     `Retrieved Context: ${contextBlock}`,
-    'Previous collected data:',
-    JSON.stringify(sessionData || {}, null, 2),
-    'Business Context:',
-    JSON.stringify(businessContext || {}, null, 2),
-    '👉 If the user\'s message contains loan/transfer parameters, FILL the action JSON data and ignore the helpful response.',
-    'Respond naturally and continue conversation.',
-  ].join('\n\n');
+  ];
+
+  if (liveWebContext) {
+    promptParts.push(`Live Internet Context (Real-time information from Web Search):`);
+    promptParts.push(liveWebContext);
+    promptParts.push(`If the Live Internet Context contains the answer to the user's question, prioritize it over your internal knowledge.`);
+  }
+
+  promptParts.push('Previous collected data:');
+  promptParts.push(JSON.stringify(sessionData || {}, null, 2));
+  promptParts.push('Business Context:');
+  promptParts.push(JSON.stringify(businessContext || {}, null, 2));
+  promptParts.push('👉 If the user\'s message contains loan/transfer parameters, FILL the action JSON data and ignore the helpful response.');
+  promptParts.push('Respond naturally and continue conversation.');
+
+  return promptParts.join('\n\n');
 };
 
 const callGroqOnce = async ({
@@ -97,6 +106,7 @@ const callGroqOnce = async ({
   businessContext,
   sessionData,
   previousConversation,
+  liveWebContext,
 }) => {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
@@ -109,7 +119,7 @@ const callGroqOnce = async ({
     { role: 'assistant', content: String(previousConversation || '').trim() || 'No previous conversation yet.' },
     {
       role: 'user',
-      content: buildUserPrompt({ message, intent, docs, businessContext, sessionData }),
+      content: buildUserPrompt({ message, intent, docs, businessContext, sessionData, liveWebContext }),
     },
   ].filter(msg => msg && msg.role && msg.content);
 

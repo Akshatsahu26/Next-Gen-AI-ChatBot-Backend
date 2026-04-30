@@ -4,6 +4,7 @@ const { handleFraud, handleLoan } = require('../services/business.service');
 const { generateGroqResponse } = require('../services/groqAI');
 const { buildChatResponse, buildAIErrorResponse } = require('../services/response.service');
 const { calculateEMIResult } = require('../services/emi.service');
+const { searchWeb } = require('../services/webSearch.service');
 const Transaction = require('../../models/Transaction');
 const {
   userSessions,
@@ -245,6 +246,12 @@ const handleChat = async (req, res) => {
 
     const docs = retrieveRelevantDocuments(message, 4);
     const businessContext = buildBusinessContext({ intent, session, message });
+    
+    let liveWebContext = null;
+    if (intent === INTENTS.GENERAL) {
+      liveWebContext = await searchWeb(message);
+    }
+
     const sessionData = {
       intent: session.intent,
       step: session.step,
@@ -268,6 +275,7 @@ const handleChat = async (req, res) => {
         businessContext,
         sessionData,
         previousConversation,
+        liveWebContext,
       });
 
       let parsedAI = { message: groqResult.text, action: { type: 'none', data: {} } };
