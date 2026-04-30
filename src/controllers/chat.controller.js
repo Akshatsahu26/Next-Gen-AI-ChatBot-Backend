@@ -226,7 +226,8 @@ const handleChat = async (req, res) => {
     }
 
     let session = getSession(sessionId);
-    const detectedIntent = detectIntent(message);
+    const detectedIntentResult = detectIntent(message);
+    const detectedIntent = detectedIntentResult.intent;
     const intent = resolveIntent(session, detectedIntent);
 
     if (session.intent !== intent) {
