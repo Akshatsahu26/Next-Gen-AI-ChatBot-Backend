@@ -249,7 +249,7 @@ const handleChat = async (req, res) => {
     const businessContext = buildBusinessContext({ intent, session, message });
     
     let liveWebContext = null;
-    if (intent === INTENTS.GENERAL) {
+    if (intent === INTENTS.GENERAL || detectedIntent === INTENTS.GENERAL) {
       liveWebContext = await searchWeb(message);
     }
 
