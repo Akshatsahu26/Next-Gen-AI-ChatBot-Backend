@@ -11,7 +11,7 @@ const dummyUsers = [
     name: 'Akash Sharma',
     email: 'akash@bankseva.com',
     phone: '9876543210',
-    password: 'Pass@123',
+    password: 'Password@2611',
     pin: '1234',
     accountNumber: '1234567801',
     balance: 125000,
